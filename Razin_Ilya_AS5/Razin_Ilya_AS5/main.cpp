@@ -117,54 +117,95 @@ struct CompressorStation {
 };
 
 void saveData(Pipe& p, CompressorStation& cs) {
-    ofstream out;
-    out.open("pipe_data.txt");
-    if (out.is_open()) {
-        if (p.name.size() != 0){
-            out << p.name;
-            out << "\n" << p.length;
-            out << "\n" << p.diameter;
-            out << "\n" << p.inRepair;
+    ofstream file("data.txt");
+    if (p.name.size() != 0){
+        if (file.is_open()){
+            file << "Pipe" << endl;
+            file << p.name << endl;
+            file << p.length << endl;
+            file << p.diameter << endl;
+            file << p.inRepair << endl;
+            
         }
-        out.close();
+        else{
+            cout << "Не удалось открыть файл" << endl;
+        }
+    }
+    if (cs.name.size() != 0){
+        if (file.is_open()){
+            file << "CS" << endl;
+            file << cs.name << endl;
+            file << cs.numWorkshops << endl;
+            file << cs.numWorkshopsInOperation << endl;
+            file << cs.efficiency << endl;
+            
+        }
+        else{
+            cout << "Не удалось открыть файл" << endl;
+        }
+    }
+    file.close();
+    if (cs.name.size() == 0 && p.name.size() == 0){
+        cout << "Введите данные для сохранения" << endl;
     }
     else{
-        cout << "Ошибка сохранения" << endl;
-    }
-    out.open(" cs_data.txt");
-    if (out.is_open()){
-        if (cs.name.size() != 0){
-            out << cs.name;
-            out << "\n" << cs.numWorkshops;
-            out << "\n" << cs.numWorkshopsInOperation;
-            out << "\n" << cs.efficiency;
-        }
-        out.close();
-    }
-    else{
-        cout << "Ошибка сохранения" << endl;
+        cout << "Данные успешно сохранены" << endl;
     }
 }
 
 void loadData(Pipe& p, CompressorStation& cs) {
-            ifstream file("pipe_data.txt");
-            if (file.is_open()){
-                file >> p.name;
-                file >> p.length;
-                file >> p.diameter;
-                file >> p.inRepair;
-                cout << "Данные успешно обновлены" << endl;
+    string line;
+    ifstream file("data.txt");
+    if (file.is_open()){
+        getline(file,line);
+        if (line == "Pipe"){
+            getline(file,p.name);
+            
+            getline(file, line);
+            p.length = stod(line);
+            
+            getline(file, line);
+            p.diameter = stod(line);
+            
+            getline(file, line);
+            p.inRepair = stoi(line);
+            
+            getline(file,line);
+            if (line == "CS"){
+                getline(file,cs.name);
+                
+                getline(file, line);
+                cs.numWorkshops = stoi(line);
+                
+                getline(file, line);
+                cs.numWorkshopsInOperation = stoi(line);
+                
+                getline(file, line);
+                cs.efficiency = stoi(line);
             }
-            file.close();
-            ifstream data("cs_data.txt");
-            if (data.is_open()){
-                data >> cs.name;
-                data >> cs.numWorkshops;
-                data >> cs.numWorkshopsInOperation;
-                data >> cs.efficiency;
-                cout << "Данные успешно обновлены" << endl;
-            }
-            data.close();
+            cout << "Данные успешно загрузились" << endl;
+        }
+        else if (line == "CS"){
+            getline(file,cs.name);
+            
+            getline(file, line);
+            cs.numWorkshops = stoi(line);
+            
+            getline(file, line);
+            cs.numWorkshopsInOperation = stoi(line);
+            
+            getline(file, line);
+            cs.efficiency = stoi(line);
+            cout << "Данные успешно загрузились" << endl;
+        }
+        else{
+            cout << "Файл пуст" << endl;
+        }
+    }
+    else{
+        cout << "Не удалось открыть файл" << endl;
+    }
+    file.close();
 }
 
 int main() {
