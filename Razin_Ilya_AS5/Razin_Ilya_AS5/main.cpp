@@ -59,7 +59,7 @@ struct Pipe {
     }
     
     void editpipe(){
-        if (name.size() != 0) {//!!!!!
+        if (name.size() != 0) {
             bool inrep = false;
             cout << "Труба в ремонте? (0 - Нет, 1 - Да): ";
             cin >> inrep;
