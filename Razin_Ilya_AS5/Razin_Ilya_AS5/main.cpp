@@ -117,7 +117,7 @@ struct CompressorStation {
 };
 
 void saveData(Pipe& p, CompressorStation& cs) {
-    ofstream file("data.txt");
+    ofstream file("/Users/ilyarazin/Documents/GitHub/labs_Ilya_Razin/Razin_Ilya_AS5/Razin_Ilya_AS5/data55667.txt");
     if (p.name.size() != 0){
         if (file.is_open()){
             file << "Pipe" << endl;
@@ -155,7 +155,7 @@ void saveData(Pipe& p, CompressorStation& cs) {
 
 void loadData(Pipe& p, CompressorStation& cs) {
     string line;
-    ifstream file("data.txt");
+    ifstream file("/Users/ilyarazin/Documents/GitHub/labs_Ilya_Razin/Razin_Ilya_AS5/Razin_Ilya_AS5/data55667.txt");
     if (file.is_open()){
         getline(file,line);
         if (line == "Pipe"){
