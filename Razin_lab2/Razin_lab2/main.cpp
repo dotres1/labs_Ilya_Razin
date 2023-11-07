@@ -1,116 +1,101 @@
-#include "DataManagement.hpp"
 #include <iostream>
+#include <fstream>
+#include <string>
+#include "Pipe.hpp"
+#include "CompressorStation.hpp"
+#include "Functions.hpp"
+
+using namespace std;
 
 int main() {
-    DataManagement dataManager;
-
+    Pipe pipe;
+    CompressorStation cs;
+    int choice;
     while (true) {
-        std::cout << "Меню:" << std::endl;
-        std::cout << "1. Добавить трубу" << std::endl;
-        std::cout << "2. Редактировать трубу" << std::endl;
-        std::cout << "3. Удалить трубу" << std::endl;
-        std::cout << "4. Добавить КС" << std::endl;
-        std::cout << "5. Редактировать КС" << std::endl;
-        std::cout << "6. Удалить КС" << std::endl;
-        std::cout << "7. Вывести информацию" << std::endl;
-        std::cout << "8. Вывести журнал действий" << std::endl;
-        std::cout << "0. Выход" << std::endl;
+        cout << "Меню:" << endl;
+        cout << "1. Добавить трубу" << endl;
+        cout << "2. Добавить КС" << endl;
+        cout << "3. Просмотр всех объектов " << endl;
+        cout << "4. Редактировать трубу" << endl;
+        cout << "5. Редактировать КС" << endl;
+        cout << "6. Сохранить" << endl;
+        cout << "7. Загрузить" << endl;
+        cout << "0. Выход" << endl;
 
-        int choice;
-        std::cout << "Введите ваш выбор: ";
-        std::cin >> choice;
-
+        cout << "Введите ваш выбор: ";
+        choice = CorNumb(0, 7);
         switch (choice) {
             case 1: {
-                // Добавление трубы
-                std::string name;
-                double length, diameter;
-                std::cout << "Введите название трубы: ";
-                std::cin >> name;
-                std::cout << "Введите длину трубы: ";
-                std::cin >> length;
-                std::cout << "Введите диаметр трубы: ";
-                std::cin >> diameter;
-                Pipe pipe(name, length, diameter);
-                dataManager.addPipe(pipe);
-                dataManager.logAction("Добавлена новая труба: " + name);
+                pipe.readFromConsole();
                 break;
             }
             case 2: {
-                // Редактирование трубы
-                int uniqueID;
-                std::cout << "Введите уникальный ID трубы для редактирования: ";
-                std::cin >> uniqueID;
-                // Здесь вводите новые значения и вызываете dataManager.editPipe(uniqueID, updatedPipe)
+                cs.readFromConsole();
                 break;
             }
             case 3: {
-                // Удаление трубы
-                int uniqueID;
-                std::cout << "Введите уникальный ID трубы для удаления: ";
-                std::cin >> uniqueID;
-                dataManager.deletePipe(uniqueID);
-                dataManager.logAction("Удалена труба с уникальным ID: " + std::to_string(uniqueID));
-                break;
-            }
-            case 4: {
-                // Добавление КС
-                std::string name;
-                int numWorkshops, numWorkshopsInOperation;
-                double efficiency;
-                std::cout << "Введите название КС: ";
-                std::cin >> name;
-                std::cout << "Введите количество цехов: ";
-                std::cin >> numWorkshops;
-                std::cout << "Введите количество цехов в работе: ";
-                std::cin >> numWorkshopsInOperation;
-                std::cout << "Введите эффективность: ";
-                std::cin >> efficiency;
-                CompressorStation cs(name, numWorkshops, numWorkshopsInOperation, efficiency);
-                dataManager.addCompressorStation(cs);
-                dataManager.logAction("Добавлена новая КС: " + name);
-                break;
-            }
-            case 5: {
-                // Редактирование КС
-                int uniqueID;
-                std::cout << "Введите уникальный ID КС для редактирования: ";
-                std::cin >> uniqueID;
-                // Здесь вводите новые значения и вызываете dataManager.editCompressorStation(uniqueID, updatedCS)
-                break;
-            }
-            case 6: {
-                // Удаление КС
-                int uniqueID;
-                std::cout << "Введите уникальный ID КС для удаления: ";
-                std::cin >> uniqueID;
-                dataManager.deleteCompressorStation(uniqueID);
-                dataManager.logAction("Удалена КС с уникальным ID: " + std::to_string(uniqueID));
-                break;
-            }
-            case 7: {
-                // Вывод информации о трубах и КС
-                // Здесь выводите данные из dataManager.getPipes() и dataManager.getCompressorStations()
-                break;
-            }
-            case 8: {
-                // Вывод журнала действий
-                const std::vector<LogEntry>& log = dataManager.getLog();
-                std::cout << "Журнал действий:" << std::endl;
-                for (const LogEntry& entry : log) {
-                    std::cout << entry.timestamp << " - " << entry.action << std::endl;
+                cout << "Труба: " << endl;
+                if (pipe.getName().size() != 0){
+                    pipe.printToConsole();
+                    cout << endl;
+                }
+                else{
+                    cout << "Добавьте трубу" << endl;
+                }
+                cout << "КС: " << endl;
+                if (cs.getName().size() != 0){
+                    cs.printToConsole();
+                    cout << endl;
+                }
+                else{
+                    cout << "Добавьте КС" << endl;
                 }
                 break;
             }
+            case 4: {
+                pipe.editpipe();
+                break;
+            }
+            case 5: {
+                if (cs.getName().size() != 0) {
+                    int choice;
+                    cout << "1. Запустить цех" << endl;
+                    cout << "2. Остановить цех" << endl;
+                    cout << "Выберите действие: ";
+                    cin >> choice;
+                    switch (choice) {
+                        case 1: {
+                            cs.startWorkshop();
+                            break;
+                        }
+                        case 2: {
+                            cs.stopWorkshop();
+                            break;
+                        }
+                        default: {
+                            cout << "Ошибка выбора." << endl;
+                        }
+                    }
+                }
+                else {
+                    cout << "КС не найдены." << endl;
+                }
+                break;
+            }
+            case 6: {
+                saveData();
+                break;
+            }
+            case 7: {
+                loadData();
+                break;
+            }
             case 0: {
-                // Выход из программы
                 return 0;
             }
             default: {
-                std::cout << "Ошибка выбора." << std::endl;
+                cout << "Ошибка выбора." << endl;
             }
         }
     }
-
-    return 0;
 }

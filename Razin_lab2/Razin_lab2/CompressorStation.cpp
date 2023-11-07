@@ -1,48 +1,71 @@
 #include "CompressorStation.hpp"
-#include <ctime> // Для генерации уникального идентификатора
+#include "Functions.hpp"
+#include <iostream>
+using namespace std;
 
-CompressorStation::CompressorStation(const std::string& name, int numWorkshops, int numWorkshopsInOperation, double efficiency)
-    : name(name), numWorkshops(numWorkshops), numWorkshopsInOperation(numWorkshopsInOperation), efficiency(efficiency) {
-    // Генерация уникального идентификатора (псевдокод)
-    uniqueID = generateUniqueID();
+void CompressorStation::readFromConsole() {
+    cout << "Введите название КС: ";
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
+    getline(cin, name);
+    cout << "Введите колличество цехов: ";
+    numWorkshops = CorNumb(0, INT_MAX);
+    cout << "Введите колличество цехов в работе: ";
+    numWorkshopsInOperation = CorNumb(0, numWorkshops);
+    cout << "Введите эффективность: ";
+    efficiency = CorNumb(0, 10);
 }
 
-
-// Вспомогательная функция для генерации уникального идентификатора
-int CompressorStation::generateUniqueID() {
-    static int nextID = 1; // Статическая переменная для хранения следующего доступного ID
-    return nextID++;
-}
-
-const std::string& CompressorStation::getName() const {
-    return name;
-}
-
-int CompressorStation::getNumWorkshops() const {
-    return numWorkshops;
-}
-
-int CompressorStation::getNumWorkshopsInOperation() const {
-    return numWorkshopsInOperation;
-}
-
-double CompressorStation::getEfficiency() const {
-    return efficiency;
-}
-
-int CompressorStation::getUniqueID() const {
-    return uniqueID;
+void CompressorStation::printToConsole() {
+    cout << "Название: " << name << endl;
+    cout << "Колличество цехов: " << numWorkshops << endl;
+    cout << "Колличество цехов в работе: " << numWorkshopsInOperation << endl;
+    cout << "Эффективность: " << efficiency << endl;
 }
 
 void CompressorStation::startWorkshop() {
     if (numWorkshopsInOperation < numWorkshops) {
         numWorkshopsInOperation++;
+        cout << "Цех успешно начал рабоать." << endl;
+    } else {
+        cout << "Все цехи уже в работе." << endl;
     }
 }
 
 void CompressorStation::stopWorkshop() {
     if (numWorkshopsInOperation > 0) {
         numWorkshopsInOperation--;
+        cout << "Цех успешно остановлен." << endl;
+    } else {
+        cout << "Нет цехов в работе." << endl;
     }
 }
 
+const std::string& CompressorStation::getName() const {
+    return name;
+}
+
+void CompressorStation::setName(const std::string& newName) {
+    name = newName;
+}
+
+int CompressorStation::getnumWorkshops(){
+    return numWorkshops;
+}
+void CompressorStation::setnumWorkshops(int newnumWorkshops){
+    numWorkshops = newnumWorkshops;
+}
+
+int CompressorStation::getnumWorkshopsInOperation(){
+    return numWorkshopsInOperation;
+}
+void CompressorStation::setnumWorkshopsInOperation(double newnumWorkshopsInOperation){
+    numWorkshopsInOperation = newnumWorkshopsInOperation;
+}
+
+double CompressorStation::getefficiency(){
+    return efficiency;
+}
+void CompressorStation::setefficiency(double newefficiency){
+    efficiency = newefficiency;
+}

@@ -1,23 +1,35 @@
+#ifndef Pipe_hpp
+#define Pipe_hpp
+
 #pragma once
 #include <string>
+using namespace std;
 
 class Pipe {
 public:
-    Pipe(const std::string& name, double length, double diameter);
+    Pipe(); // Конструктор
+    void readFromConsole();
+    void printToConsole();
+    void editpipe();
+    
+    // Геттер и сеттер
     const std::string& getName() const;
-    int generateUniqueID();
-    double getLength() const;
-    double getDiameter() const;
-    bool isInRepair() const;
-    void setInRepair(bool inRepair);
-    int getUniqueID() const;
+    void setName(const std::string& newName);
+    
+    double getlenght();
+    void setlenght(double newlenght);
+    
+    double getdiameter();
+    void setdiameter(double newdiameter);
+    
+    bool getinRepair();
+    void setinRepair(bool newinRepair);
 
 private:
-    std::string name;
+    string name;
     double length;
     double diameter;
     bool inRepair;
-    int uniqueID;
 };
 
-
+#endif /* Pipe_hpp */
