@@ -1,37 +1,22 @@
-#ifndef CompressorStation_hpp
-#define CompressorStation_hpp
-
-
 #pragma once
+#include <fstream>
 #include <string>
 using namespace std;
 
-class CompressorStation {
+class CS
+{
+    int id;
+    static int Nextid;
 public:
-    CompressorStation(); // Конструктор
-    void readFromConsole();
-    void printToConsole();
-    void startWorkshop();
-    void stopWorkshop();
-    
-    // Геттер и сеттер для name
-    const std::string& getName() const;
-    void setName(const std::string& newName);
-    
-    int getnumWorkshops();
-    void setnumWorkshops(int newnumWorkshops);
-    
-    int getnumWorkshopsInOperation();
-    void setnumWorkshopsInOperation(double newnumWorkshopsInOperation);
-    
-    double getefficiency();
-    void setefficiency(double newefficiency);
-    
-private:
+    inline int getid() const { return id; };
     string name;
-    int numWorkshops;
-    int numWorkshopsInOperation;
+    int num_department;
+    int work_department;
     double efficiency;
+    CS();
+    void add();
+    void view();
+    void change();
+    void download(ifstream& read);
+    void save(ofstream& out);
 };
-
-#endif /* CompressorStation_hpp */

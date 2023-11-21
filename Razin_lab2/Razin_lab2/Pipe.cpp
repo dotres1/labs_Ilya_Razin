@@ -1,65 +1,80 @@
-#include "Pipe.hpp"
-#include "Functions.hpp"
 #include <iostream>
+#include <fstream>
+
+#include "Pipe.hpp"
+#include "Functions.h"
+
 using namespace std;
 
-void Pipe::readFromConsole() {
+int Pipe::Nextid = 1;
+
+Pipe::Pipe()
+{
+    this->id = Nextid;
+    Nextid += 1;
+}
+
+void Pipe::add() {
     cout << "Введите название трубы: ";
-    cin.clear();
-    cin.ignore(INT_MAX, '\n');
-    getline(cin, name);
-    cout << "Введите длину трубы (в км): ";
-    length = CorNumb(0.0, __DBL_MAX__);
+    name = get_str();
+    cout << "Введите длину трубы: ";
+    length = get_correct_value<int>(1, INT_MAX);
     cout << "Введите диаметр трубы: ";
-    diameter = CorNumb(0.0, __DBL_MAX__);
-    cout << "Данные введены успешно" << endl;
-    inRepair = false;
+    diameter = get_correct_value<int>(1, INT_MAX);
+    cout << "Подлежит ли она ремонту?: ";
+    maintenance = get_correct_value<bool>(0, 1);
 }
 
-void Pipe::printToConsole() {
-    cout << "Название: " << name << endl;
-    cout << "Длина: " << length << " км" << endl;
-    cout << "Диаметр: " << diameter << endl;
-    cout << "В ремонте: " << (inRepair ? "Да" : "Нет") << endl;
-}
-
-void Pipe::editpipe() {
-    if (name.size() != 0) {
-        bool inrep = false;
-        cout << "Труба в ремонте? (0 - Нет, 1 - Да): ";
-        cin >> inrep;
-        inRepair = inrep;
+void Pipe::view() {
+    if (!name.empty()) {
+        cout << "                        Труба                                                                 " << '\n';
+        cout << id << endl;
+        cout << "Название трубы - " << name << '\n';
+        cout << "Длина трубы - " << length << '\n';
+        cout << "Диаметр трубы - " << diameter << '\n';
+        if (maintenance == 1) {
+            cout << "Ремонт?: Yes\n";
+        }
+        else {
+            cout << "Ремонт?: No\n";
+        }
     }
-    else{
-        cout << "Трубы не найдены." << endl;
+    else {
+        cout << "                        Труба отсутствует\n";
     }
 }
 
-const std::string& Pipe::getName() const {
-    return name;
+void Pipe::change() {
+    cout << "Меняется труба с id " << id << '\n';
+    cout << "Работает труба или нет(0 - работает, 1 - не работает): ";
+    maintenance = get_correct_value(0, 1);
 }
 
-void Pipe::setName(const std::string& newName) {
-    name = newName;
+void Pipe::save(ofstream& out) {
+    if (out.is_open()) {
+        out << "pipe" << '\n';
+        out << id << '\n';
+        out << name << '\n';
+        out << length << '\n';
+        out << diameter << '\n';
+        out << maintenance << '\n';
+        cout << "Данные трубы " << id << " загружены в файл." << '\n';
+    }
+    else {
+        cout << "Ошибка!";
+    }
 }
 
-double Pipe::getlenght(){
-    return length;
-}
-void Pipe::setlenght(double newlenght){
-    length = newlenght;
-}
+void Pipe::download(ifstream& read) {
+    if (read.is_open()) {
+        read >> id;
+        read >> name;
+        read >> length;
+        read >> diameter;
+        read >> maintenance;
 
-double Pipe::getdiameter(){
-    return diameter;
-}
-void Pipe::setdiameter(double newdiameter){
-    diameter = newdiameter;
-}
-
-bool Pipe::getinRepair(){
-    return inRepair;
-}
-void Pipe::setinRepair(bool newinRepair){
-    inRepair = newinRepair;
+    }
+    else {
+        cout << "Ошибка!";
+    }
 }

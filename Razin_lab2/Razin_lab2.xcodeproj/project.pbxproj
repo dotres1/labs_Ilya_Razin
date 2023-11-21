@@ -10,7 +10,6 @@
 		138A33FC2AF453A00008AF44 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 138A33FB2AF453A00008AF44 /* main.cpp */; };
 		13BA57742AFA800500D0E58A /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BA57722AFA800500D0E58A /* Pipe.cpp */; };
 		13BA57772AFA801A00D0E58A /* CompressorStation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BA57752AFA801A00D0E58A /* CompressorStation.cpp */; };
-		13BA577A2AFA831900D0E58A /* Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BA57782AFA831900D0E58A /* Functions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,14 +25,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1351C2B12B0BBEB30069B1BE /* logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
+		1351C2B22B0BC0210069B1BE /* Functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		138A33F82AF453A00008AF44 /* Razin_lab2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Razin_lab2; sourceTree = BUILT_PRODUCTS_DIR; };
 		138A33FB2AF453A00008AF44 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		13BA57722AFA800500D0E58A /* Pipe.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
 		13BA57732AFA800500D0E58A /* Pipe.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pipe.hpp; sourceTree = "<group>"; };
 		13BA57752AFA801A00D0E58A /* CompressorStation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorStation.cpp; sourceTree = "<group>"; };
 		13BA57762AFA801A00D0E58A /* CompressorStation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CompressorStation.hpp; sourceTree = "<group>"; };
-		13BA57782AFA831900D0E58A /* Functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Functions.cpp; sourceTree = "<group>"; };
-		13BA57792AFA831900D0E58A /* Functions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Functions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				138A33FB2AF453A00008AF44 /* main.cpp */,
+				1351C2B22B0BC0210069B1BE /* Functions.h */,
 				13BA57722AFA800500D0E58A /* Pipe.cpp */,
-				13BA57782AFA831900D0E58A /* Functions.cpp */,
-				13BA57792AFA831900D0E58A /* Functions.hpp */,
 				13BA57752AFA801A00D0E58A /* CompressorStation.cpp */,
 				13BA57762AFA801A00D0E58A /* CompressorStation.hpp */,
+				1351C2B12B0BBEB30069B1BE /* logging.h */,
 				13BA57732AFA800500D0E58A /* Pipe.hpp */,
 			);
 			path = Razin_lab2;
@@ -137,7 +136,6 @@
 				13BA57772AFA801A00D0E58A /* CompressorStation.cpp in Sources */,
 				138A33FC2AF453A00008AF44 /* main.cpp in Sources */,
 				13BA57742AFA800500D0E58A /* Pipe.cpp in Sources */,
-				13BA577A2AFA831900D0E58A /* Functions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

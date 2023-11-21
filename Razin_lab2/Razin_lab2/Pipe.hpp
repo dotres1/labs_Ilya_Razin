@@ -1,35 +1,22 @@
-#ifndef Pipe_hpp
-#define Pipe_hpp
-
 #pragma once
-#include <string>
+#include <fstream>
+
 using namespace std;
 
-class Pipe {
+class Pipe
+{
+    int id;
+    static int Nextid;
 public:
-    Pipe(); // Конструктор
-    void readFromConsole();
-    void printToConsole();
-    void editpipe();
-    
-    // Геттер и сеттер
-    const std::string& getName() const;
-    void setName(const std::string& newName);
-    
-    double getlenght();
-    void setlenght(double newlenght);
-    
-    double getdiameter();
-    void setdiameter(double newdiameter);
-    
-    bool getinRepair();
-    void setinRepair(bool newinRepair);
-
-private:
+    inline int getid() const { return id; };
     string name;
-    double length;
-    double diameter;
-    bool inRepair;
+    int length;
+    int diameter;
+    bool maintenance;
+    Pipe();
+    void add();
+    void view();
+    void change();
+    void download(ifstream& read);
+    void save(ofstream& out);
 };
-
-#endif /* Pipe_hpp */

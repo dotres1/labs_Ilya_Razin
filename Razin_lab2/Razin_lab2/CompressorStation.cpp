@@ -1,71 +1,74 @@
-#include "CompressorStation.hpp"
-#include "Functions.hpp"
 #include <iostream>
+#include <fstream>
+
+#include "CompressorStation.hpp"
+#include "Functions.h"
+
 using namespace std;
 
-void CompressorStation::readFromConsole() {
-    cout << "Введите название КС: ";
-    cin.clear();
-    cin.ignore(INT_MAX, '\n');
-    getline(cin, name);
-    cout << "Введите колличество цехов: ";
-    numWorkshops = CorNumb(0, INT_MAX);
-    cout << "Введите колличество цехов в работе: ";
-    numWorkshopsInOperation = CorNumb(0, numWorkshops);
-    cout << "Введите эффективность: ";
-    efficiency = CorNumb(0, 10);
+int CS::Nextid = 1;
+
+CS::CS()
+{
+    this->id = Nextid;
+    Nextid += 1;
 }
 
-void CompressorStation::printToConsole() {
-    cout << "Название: " << name << endl;
-    cout << "Колличество цехов: " << numWorkshops << endl;
-    cout << "Колличество цехов в работе: " << numWorkshopsInOperation << endl;
-    cout << "Эффективность: " << efficiency << endl;
+void CS::add() {
+    cout << "Введите название станции: ";
+    name = get_str();
+    cout << "Введите количество цехов: ";
+    num_department = get_correct_value<int>(0, INT_MAX);
+    cout << "Введите количество работающих цехов: ";
+    work_department = get_correct_value<int>(0, num_department);
+    cout << "Введите его эффективность: ";
+    efficiency = get_correct_value<double>(0.0, __DBL_MAX__);
 }
 
-void CompressorStation::startWorkshop() {
-    if (numWorkshopsInOperation < numWorkshops) {
-        numWorkshopsInOperation++;
-        cout << "Цех успешно начал рабоать." << endl;
-    } else {
-        cout << "Все цехи уже в работе." << endl;
+void CS::view() {
+    if (!name.empty()) {
+        cout << "                        Станция                                                                 " << '\n';
+        cout << getid() << endl;
+        cout << "Название станции - " << name << '\n';
+        cout << "Количество цехов - " << num_department << '\n';
+        cout << "Количество работающих цехов - " << work_department << '\n';
+        cout << "Эффективность станции - " << efficiency << '\n';
+    }
+    else {
+        cout << "                        КС отсутствует\n";
     }
 }
 
-void CompressorStation::stopWorkshop() {
-    if (numWorkshopsInOperation > 0) {
-        numWorkshopsInOperation--;
-        cout << "Цех успешно остановлен." << endl;
-    } else {
-        cout << "Нет цехов в работе." << endl;
+void CS::change() {
+    cout << "Меняется КС с id " << id << '\n';
+    cout << "Сколько цехов задействовано в работе: ";
+    work_department = get_correct_value(0, num_department);
+}
+
+void CS::save(ofstream& out) {
+    if (out.is_open()) {
+        out << "comp"<< '\n';
+        out << id << '\n';
+        out << name << '\n';
+        out << num_department << '\n';
+        out << work_department << '\n';
+        out << efficiency << '\n';
+        cout << "Данные КС "<< id << " загружены в файл." << '\n';
+    }
+    else {
+        cout << "Ошибка!";
     }
 }
 
-const std::string& CompressorStation::getName() const {
-    return name;
-}
-
-void CompressorStation::setName(const std::string& newName) {
-    name = newName;
-}
-
-int CompressorStation::getnumWorkshops(){
-    return numWorkshops;
-}
-void CompressorStation::setnumWorkshops(int newnumWorkshops){
-    numWorkshops = newnumWorkshops;
-}
-
-int CompressorStation::getnumWorkshopsInOperation(){
-    return numWorkshopsInOperation;
-}
-void CompressorStation::setnumWorkshopsInOperation(double newnumWorkshopsInOperation){
-    numWorkshopsInOperation = newnumWorkshopsInOperation;
-}
-
-double CompressorStation::getefficiency(){
-    return efficiency;
-}
-void CompressorStation::setefficiency(double newefficiency){
-    efficiency = newefficiency;
+void CS::download(ifstream& read) {
+    if (read.is_open()) {
+        read >> id;
+        read >> name;
+        read >> num_department;
+        read >> work_department;
+        read >> efficiency;
+    }
+    else {
+        cout << "Ошибка!";
+    }
 }
