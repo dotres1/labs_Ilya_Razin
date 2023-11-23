@@ -3,16 +3,22 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <string>
-
+#include <chrono>
+#include <fstream> // для работы с файлами
+#include <sstream>
 #include "CompressorStation.hpp"
 #include "Pipe.hpp"
 #include "logging.h"
 
 
+using namespace std;
+using namespace chrono;
+
+
 extern unordered_map<int, Pipe> data_P;
 extern unordered_map<int, CS> data_KS;
 
-using namespace std;
+
 
 inline void menu() {
     cout << "1. Добавить трубу" << '\n';
@@ -302,4 +308,12 @@ inline void seven(){
             }
         }
     }
+}
+
+inline void logg(){
+    redirect_output_wrapper log_out(cout);
+
+        // Перенаправляем cout в файл
+        ofstream logfile("/Users/ilyarazin/Documents/GitHub/labs_Ilya_Razin/Razin_lab2/Razin_lab2/log.txt");
+        log_out.redirect(logfile);
 }

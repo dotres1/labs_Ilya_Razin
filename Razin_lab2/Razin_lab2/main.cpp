@@ -17,26 +17,12 @@
 using namespace std;
 using namespace chrono;
 
-
 unordered_map<int, Pipe> data_P;
 unordered_map<int, CS> data_KS;
 
 int main() {
     
-    redirect_output_wrapper cerr_out(cerr);
-    
-    auto now = system_clock::now();
-    time_t now_c = system_clock::to_time_t(now);
-    __iom_t10<char> time = put_time(localtime(&now_c), "%d-%m-%Y %H_%M_%OS");
-    ostringstream stream;
-    stream << time;
-    string mytime = stream.str();
-    
-    ofstream logfile("/Users/ilyarazin/Documents/GitHub/labs_Ilya_Razin/Razin_lab2/Razin_lab2/log" + mytime + ".txt");
-    if (logfile) {
-        cerr_out.redirect(logfile);
-    }
-    
+    logg();
     while (true) {
         menu();  // вызываем меню
         cout << "Введите ваш выбор: ";
