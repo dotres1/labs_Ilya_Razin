@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		136879BC2B0FD115007B1660 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 136879BB2B0FD115007B1660 /* main.cpp */; };
+		1398FBED2B15272B0063C7F8 /* CS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1398FBEB2B15272B0063C7F8 /* CS.cpp */; };
+		1398FBF02B1527EC0063C7F8 /* Class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1398FBEF2B1527EC0063C7F8 /* Class.cpp */; };
+		1398FBF22B152B830063C7F8 /* ConsoleGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1398FBF12B152B830063C7F8 /* ConsoleGeneral.cpp */; };
+		1398FBF62B152C830063C7F8 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1398FBF52B152C830063C7F8 /* Pipe.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,15 @@
 
 /* Begin PBXFileReference section */
 		136879B82B0FD115007B1660 /* Razin_lab3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Razin_lab3; sourceTree = BUILT_PRODUCTS_DIR; };
-		136879BB2B0FD115007B1660 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1398FBEB2B15272B0063C7F8 /* CS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CS.cpp; sourceTree = "<group>"; };
+		1398FBEE2B15276C0063C7F8 /* CS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CS.h; sourceTree = "<group>"; };
+		1398FBEF2B1527EC0063C7F8 /* Class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Class.cpp; sourceTree = "<group>"; };
+		1398FBF12B152B830063C7F8 /* ConsoleGeneral.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleGeneral.cpp; sourceTree = "<group>"; };
+		1398FBF32B152BDD0063C7F8 /* Console_func.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Console_func.h; sourceTree = "<group>"; };
+		1398FBF42B152C2E0063C7F8 /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		1398FBF52B152C830063C7F8 /* Pipe.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		1398FBF72B152CAD0063C7F8 /* Pipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
+		1398FBF82B152CDA0063C7F8 /* header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +68,15 @@
 		136879BA2B0FD115007B1660 /* Razin_lab3 */ = {
 			isa = PBXGroup;
 			children = (
-				136879BB2B0FD115007B1660 /* main.cpp */,
+				1398FBEB2B15272B0063C7F8 /* CS.cpp */,
+				1398FBEE2B15276C0063C7F8 /* CS.h */,
+				1398FBEF2B1527EC0063C7F8 /* Class.cpp */,
+				1398FBF12B152B830063C7F8 /* ConsoleGeneral.cpp */,
+				1398FBF52B152C830063C7F8 /* Pipe.cpp */,
+				1398FBF32B152BDD0063C7F8 /* Console_func.h */,
+				1398FBF72B152CAD0063C7F8 /* Pipe.h */,
+				1398FBF82B152CDA0063C7F8 /* header.h */,
+				1398FBF42B152C2E0063C7F8 /* Graph.h */,
 			);
 			path = Razin_lab3;
 			sourceTree = "<group>";
@@ -119,7 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				136879BC2B0FD115007B1660 /* main.cpp in Sources */,
+				1398FBF22B152B830063C7F8 /* ConsoleGeneral.cpp in Sources */,
+				1398FBF02B1527EC0063C7F8 /* Class.cpp in Sources */,
+				1398FBED2B15272B0063C7F8 /* CS.cpp in Sources */,
+				1398FBF62B152C830063C7F8 /* Pipe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
