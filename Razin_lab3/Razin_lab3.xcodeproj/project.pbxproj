@@ -31,7 +31,6 @@
 		1398FBEE2B15276C0063C7F8 /* CS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CS.h; sourceTree = "<group>"; };
 		1398FBEF2B1527EC0063C7F8 /* Class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Class.cpp; sourceTree = "<group>"; };
 		1398FBF12B152B830063C7F8 /* ConsoleGeneral.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConsoleGeneral.cpp; sourceTree = "<group>"; };
-		1398FBF32B152BDD0063C7F8 /* Console_func.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Console_func.h; sourceTree = "<group>"; };
 		1398FBF42B152C2E0063C7F8 /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		1398FBF52B152C830063C7F8 /* Pipe.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
 		1398FBF72B152CAD0063C7F8 /* Pipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
@@ -73,7 +72,6 @@
 				1398FBEF2B1527EC0063C7F8 /* Class.cpp */,
 				1398FBF12B152B830063C7F8 /* ConsoleGeneral.cpp */,
 				1398FBF52B152C830063C7F8 /* Pipe.cpp */,
-				1398FBF32B152BDD0063C7F8 /* Console_func.h */,
 				1398FBF72B152CAD0063C7F8 /* Pipe.h */,
 				1398FBF82B152CDA0063C7F8 /* header.h */,
 				1398FBF42B152C2E0063C7F8 /* Graph.h */,
