@@ -64,15 +64,15 @@ int main()
             break;
         }
         case 8: {
-            eight();
+            findPipe();
             break;
         }
         case 9: {
-            nine();
+            findCS();
             break;
         }
         case 10: {
-            ten();
+            CreateGTsys();
             break;
         }
         case 11: {

@@ -66,7 +66,7 @@ vector <int> search_cs_by_parametr(unordered_map <int, CS>& cs_group, filter_cs<
     return id;
 }
 
-inline void eight(){
+inline void findPipe(){
     System network;
     if (network.pipe_group.size() != 0) {
         auto x = network.search_p();
@@ -81,7 +81,7 @@ inline void eight(){
         cout << "Труба не найдена" << endl;
 }
 
-inline void nine(){
+inline void findCS(){
     System network;
     if (network.cs_group.size() != 0) {
         auto x = network.search_cs();
@@ -96,7 +96,7 @@ inline void nine(){
         cout << "КС не найдена" << endl;
 }
 
-inline void ten(){
+inline void CreateGTsys(){
     System network;
     cout << "1.Соеднить 2.Разъединить" << endl;
     int choise = correctnumber(1, 2);
